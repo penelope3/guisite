@@ -1,0 +1,133 @@
+
+/*
+File: /~pkpatel/public_html/css/pacific.css
+91.61 GUI Programming I
+Pooja K Patel, UMass Lowell Computer Science Undergrad Student, pkpatel@cs.uml.edu
+Pooja_Patel@student.uml.edu
+Copyright (c) 2020 by Pooja K. Patel. All rights reserved.
+Updated by PKP on September 29, 2020 at 8:29pm
+
+Description: This file contains the given partial source code, plus the code I
+have created in order to match the screenshots provided for HW 3.
+*/
+header, hgroup, nav, footer, figure, figcaption, aside, section, article {
+	display: block;
+}
+*, html{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+#wrapper{
+	width: 80%;
+	min-width: 600px;
+	max-width: 1250px;
+	background-color: rgb(149, 199, 229);
+	margin: auto;
+	margin-top: 2%;
+	overflow: hidden;
+}
+body {
+	background-color: #00569f;
+	background-image: url(ptrbackground.jpg);
+	background-repeat: repeat-x;
+	color: #666666;
+	font-family: Arial, Helvetica, sans-serif;
+	padding: 8px;
+}
+nav{
+	position: fixed;
+	float: left;
+	width: 185px;
+	padding-left: 2px;
+}
+nav li{
+	list-style: none;
+}
+nav ul {
+	font-size: 1.2em;
+	list-style: none;
+	padding: 20px 0 0 15px;
+}
+nav a:visited, nav a:link {
+	color: rgb(0, 0, 42);
+	text-decoration: none;
+}
+nav a:hover {
+	color: #FFFFFF;
+}
+ul a{
+	text-decoration: none;
+	font-weight: bold;
+	color: rgb(0, 0, 42);
+}
+
+#content{
+	background-color: white;
+	padding: 30px;
+	padding-right: 20px;
+	margin-left: 160px;
+	font-size: 16px;
+}
+
+#content p::after, #content ul li:last-child::after{
+	content: " \A \A ";
+	white-space: pre-wrap;
+}
+
+#content li{
+	list-style: none;
+}
+#content img{
+	width: 330px;
+	height: auto;
+	float: left;
+	margin-right: 20px;
+}
+#content li::before{
+	content: url(marker.gif);
+	padding-right: 7px;
+}
+ul{
+	padding-left: 40px;
+	list-style-position: inside;
+}
+
+header{
+	color: white;
+	background-color: rgb(0, 0, 42);
+	background-image: url(sunset.jpg);
+	background-repeat: no-repeat;
+	background-position: right;
+	object-fit: contain;
+}
+h1 {
+	margin-bottom: 0;
+	padding: 10px;
+}
+h2 {
+	color: #3399CC;
+	margin-bottom: 20px;
+}
+h1,
+h2 {
+	font-family: Georgia, "Times New Roman", serif;
+}
+#contact {
+	font-size: 90%;
+}
+dt {
+	color: #000033;
+}
+.resort{
+	font-weight: bold;
+	color: #6E8BB1;
+}
+footer {
+	font-family: Georgia, "Times New Roman", serif;
+	font-style: italic;
+	font-size: 13px;
+	background-color: white;
+	padding: 20px;
+	margin-left: 160px;
+}

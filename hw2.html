@@ -1,0 +1,81 @@
+<!--
+File: /~pkpatel/index.html
+91.61 GUI Programming I
+Pooja K Patel, UMass Lowell Computer Science Undergrad Student, pkpatel@cs.uml.edu
+Pooja_Patel@student.uml.edu
+Copyright (c) 2020 by Pooja K. Patel. All rights reserved.
+Updated by PKP on September 22, 2020 at 2:01pm
+
+Description: This file contains a basic introduction of myself. The assignment for
+Homework 2, which links to the same index page, alludes to the facts that the 
+assignment was to create this basic page without the use of bootstrap.
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+  <title>
+   Pooja's Projects
+  </title>
+  <link rel="stylesheet" href="css/hw2style.css">
+  </head>
+  <body>
+  <!-- Sticky Navigation Bar
+ sourced from advancewebdesign1spring2015.pbworks.com/w/page/92192022/Jeremiah%20Su
+modified to be personalized. -->
+    <div id="navbar">
+      <nav class="nav-collapse">
+	<ul>
+	  <li class="title">Pooja's Page</li>
+	  <li><a href="#projects">Projects</a></li>
+	  <li><a href="#top">Home</a></li>
+	</ul>
+      </nav>
+    </div>
+    <!-- main-box contains the Home/About Me information. -->
+    <div class="main-box" id="top">
+      <p>
+	Welcome to my project site! My name is Pooja Patel, and I am a senior at UMass Lowell. Here, you will be able to find my work over the course of my GUI I class. As I progress in my knowledge of web design, I will be able to update this site to look more complete.
+      </p>
+      <hr>
+    </div>
+    <!-- Project-box container holds all assignment folders, id is used to link from the nav bar -->
+    <div class="project-box" id="projects">
+      <!-- Each assignment is held in an assignments container -->
+      <div class="assignments">
+	<!--
+	button referenced from stackoverflow.com/questions/2906582/how-to-create-an-html-button-that-acts-like-a-link
+        -->
+	<button onclick="location.href='http://cs.uml.edu/~pkpatel/'" type="button"></button>
+	<br>
+      <p>Homework 2</p>
+      </div>
+      <div class="assignments">
+	<!-- Currently this button goes nowhere -->
+      <button onclick="location.href='https://cs.uml.edu/~pkpatel/hw3.html'" type="button"></button>
+      <br>
+      <p>Homework 3</p>
+      </div>
+    </div>
+    <!-- Footer class holds validation icons and copyright info -->
+    <footer>
+    <p>
+      <!-- CSS Validation buttons code taken directly from validation site -->
+      <a href="http://jigsaw.w3.org/css-validator/check/referer">
+	<img style="border:0;width:88px;height:31px"
+	     src="http://jigsaw.w3.org/css-validator/images/vcss"
+	     alt="Valid CSS!" />
+      </a>
+    </p>
+    <p>
+      <a href="http://jigsaw.w3.org/css-validator/check/referer">
+	<img style="border:0;width:88px;height:31px"
+	     src="http://jigsaw.w3.org/css-validator/images/vcss-blue"
+	     alt="Valid CSS!" />
+      </a>
+    </p>
+    <hr>
+    <p>&copy; Copyright 2020 Pooja Patel</p>
+  </footer>
+  </body>
+</html>

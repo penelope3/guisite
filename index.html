@@ -1,0 +1,85 @@
+﻿<!--
+File: /~pkpatel/index.html
+91.61 GUI Programming I
+Pooja K Patel, UMass Lowell Computer Science Undergrad Student, pkpatel@cs.uml.edu
+Pooja_Patel@student.uml.edu
+Copyright (c) 2020 by Pooja K. Patel. All rights reserved.
+Updated by PKP on October 14, 2020 at 10:18pm
+
+Description: This file contains a basic introduction of myself. The assignment for
+Homework 2, which links to the same index page, alludes to the facts that the
+assignment was to create this basic page without the use of bootstrap.
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <title>
+     Pooja's Projects
+    </title>
+  </head>
+  <body>
+    <!-- Nav bar code borrowed from https://bootstrapious.com/p/bootstrap-sticky-navbar and modified -->
+    <header class="header sticky-top">
+      <nav class="navbar navbar-expand-xl navbar-light py-3 shadow-sm">
+        <div class="container-fluid"><a class="navbar-brand" href="#">
+          <strong class="h4 mb-0 font-weight-bold text-uppercase ">Pooja's Page</strong></a>
+          <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="h5 nav-item active"><a class="nav-link" href="#top">Home <span class="sr-only">(current)</span></a></li>
+                    <li class="h5 nav-item active"><a class="nav-link" href="#projects">Projects</a></li>
+                </ul>
+            </div>
+        </div>
+      </nav>
+    </header>
+    <!--Jumbotron knowledge from Bootstrap documentation and personal project use -->
+    <section class="jumbotron jumbotron-fluid mt-3 br-2" id="top">
+      <div class="col d-flex justify-content-center">
+      <div class="card shadow-sm">
+      <div class="row mb-3 mt-3">
+          <div class="container px-5 text-center">
+            <p class="card-text">
+    	         Welcome to my project site! My name is Pooja Patel, and I am a senior at UMass Lowell. Here, you will be able to find my work over the course of my GUI I class. As I progress in my knowledge of web design, I will be able to update this site to look more complete.
+             </p>
+             <div class="h-divider"></div>
+          </div>
+        </div>
+        <img class="card-img-bottom" id="owl" src="css/owl.png">
+      </div>
+      </div>
+    </section>
+
+    <section class="jumbotron jumbotron-fluid mt-3 br-2" id="projects">
+      <div class="col d-flex justify-content-around">
+        <div class="card shadow-sm" id="assignments">
+          <div class="row mb-3 mt-3">
+
+            <div class="container px-5">
+              <!-- Idea for alignment from https://www.quora.com/Using-HTML-how-can-I-align-text-directly-under-an-image -->
+              <ul>
+              <li><a href="https://cs.uml.edu/~pkpatel/hw2.html" class="btn"><img class="img-responsive" src="css/pink-tree.png" alt="pink tree image"><p>Homework 2</p></a></li>
+              <li><a href="https://cs.uml.edu/~pkpatel/hw3.html" class="btn"><img class="img-responsive" src="css/pink-tree.png" alt="pink tree image"><p>Homework 3</p></a></li>
+              <li><a href="https://cs.uml.edu/~pkpatel/" class="btn"><img class="img-responsive" src="css/pink-tree.png" alt="pink tree image"><p>Homework 4</p></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+  </body>
+</html>
