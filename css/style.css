@@ -17,10 +17,11 @@ body{
   opacity: 0.9;
   font-family: "Courier New", Courier, monospace;
 }
-.card{
-  width: 35rem;
-  background: #855E42;
-  opacity: .9;
+.card {
+    width: 35rem;
+    border-radius: .8rem;
+    background: #855E42;
+    opacity: .9;
 }
 .h-divider{
   border-top: 1px solid white;
@@ -41,8 +42,10 @@ p{
   font-family: "Courier New", Courier, monospace;
   font-weight: bold;
 }
-#assignments{
-  width: 70rem;
+#assignments {
+    width: 70rem;
+    height: 40rem;
+    border-radius: .8rem;
 }
 #owl{
   width: 100%;
