@@ -100,7 +100,7 @@ function table_math(data) {
 function renderTable(data) {
     var table_data = data.data;
     var height = data.height;
-    var width = table.width;
+    var width = data.width;
     var table = document.getElementById("results");
     document.getElementById("empty").style.display = "none";
     table.innerHTML = "";
