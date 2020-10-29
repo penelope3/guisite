@@ -1,11 +1,12 @@
 function getUserInput(e) {
+    document.getElementById("empty").style.display = "block";
     var error = false;
     e.preventDefault();
     clearTable();
     var all_num = ["x1", "x2", "y1", "y2"];
-    const formData = new formData(e.target);
+    const form_data = new formData(e.target);
     for (var i = 0; i < all_num.length; i++) {
-        const data = Number(formData.get(all_num[i]));
+        const data = Number(form_data.get(all_num[i]));
         const valid = validateInput(data);
 
         if (valid.isValid) {
