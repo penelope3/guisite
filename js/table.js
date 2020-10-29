@@ -1,9 +1,23 @@
+/*
+File: js/table.js
+91.61 GUI Programming I
+Pooja K Patel, UMass Lowell Computer Science Undergrad Student, pkpatel@cs.uml.edu
+Pooja_Patel@student.uml.edu
+Copyright(c) 2020 by Pooja K.Patel.All rights reserved.
+Updated by PKP on October 29, 2020 at 6:34pm
+
+Description: This file contains table making via javascript for HW5. This code
+receives input from the UI form in HW5.html and then creates a table from the
+input ranges. The table is then rendered back in the renderTable(data) function by 
+adding the relevant table elements.
+*/
+
 function getUserInput(e) {
     document.getElementById("empty").style.display = "block";
     var error = false;
     e.preventDefault();
     clearTable();
-    var all_num = ["x1", "x2", "y1", "y2"];
+    var all_num = ["y1", "y2", "x1", "x2"];
     const formData = new FormData(e.target);
     for (var i = 0; i < all_num.length; i++) {
         const data = Number(formData.get(all_num[i]));
@@ -50,7 +64,7 @@ function validateInput(data) {
         }
         return { isValid: true }
     }
-    return { valisValidid: false, reason: "Input must be of type integer" }
+    return { isValid: false, reason: "Please enter only integers." }
 }
 
 
