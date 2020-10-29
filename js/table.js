@@ -4,7 +4,7 @@ File: js/table.js
 Pooja K Patel, UMass Lowell Computer Science Undergrad Student, pkpatel@cs.uml.edu
 Pooja_Patel@student.uml.edu
 Copyright(c) 2020 by Pooja K.Patel.All rights reserved.
-Updated by PKP on October 29, 2020 at 6:34pm
+Updated by PKP on October 29, 2020 at 6:51pm
 
 Description: This file contains table making via javascript for HW5. This code
 receives input from the UI form in HW5.html and then creates a table from the
@@ -12,6 +12,8 @@ input ranges. The table is then rendered back in the renderTable(data) function 
 adding the relevant table elements.
 */
 
+//This function reseives input from the form in the html file
+//and checks for input error before creating the table.
 function getUserInput(e) {
     document.getElementById("empty").style.display = "block";
     var error = false;
@@ -38,10 +40,13 @@ function getUserInput(e) {
     }
 }
 
+//This function makes sure the table is clear before adding data.
 function clearTable() {
     document.getElementById("results").innerHTML = "";
 }
 
+//This function gets rid of any error messages once the data
+//has been validated.
 function clearError(id) {
     let element = document.getElementById(id + '_error');
     element.innerHTML = "";
@@ -50,6 +55,8 @@ function clearError(id) {
     }
 }
 
+//This function is for making the errors visible if the
+//data was not valid.
 function handleError(id, message) {
     let element = document.getElementById(id + '_error');
     console.log(id + '_error');
@@ -57,10 +64,12 @@ function handleError(id, message) {
     element.classList.remove("hidden");
 }
 
+//This is the validate function that determines whether
+//handlError() or clearError() are needed.
 function validateInput(data) {
     if (Number.isInteger(data)) {
         if (data < -100 || data > 100) {
-            return { isValid: false, reason: "Input is not within range of -100 to 100." }
+            return { isValid: false, reason: "Please enter inputs between -100 and 100." }
         }
         return { isValid: true }
     }
@@ -68,7 +77,7 @@ function validateInput(data) {
 }
 
 
-
+//This function does all the multiplying for the table
 function table_math(data) {
     var x_low = data[0];
     var x_high = data[1];
@@ -92,6 +101,7 @@ function table_math(data) {
     var row_total = y_high - y_low + 2;
     var table = [];
 
+    //empty pushes
     for (var i = 0; i < col_total; i++) {
         table.push([]);
         for (var j = 0; j < row_total; j++) {
@@ -99,6 +109,7 @@ function table_math(data) {
         }
     }
 
+    //fill the correct data
     table[0][0] = "";
     for (var i = 1; i < col_total; i++)
         table[i][0] = x_low + i - 1;
@@ -108,9 +119,12 @@ function table_math(data) {
         for (var j = 1; j < row_total; j++)
             table[i][j] = table[0][j] * table[i][0];
     }
+
+    //return the table as well as some table display info
     return { data: table, height: col_total, width: row_total };
 }
 
+//This renders the Table visually using table elements tr/th/td.
 function renderTable(data) {
     var table_data = data.data;
     var height = data.height;
