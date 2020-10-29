@@ -35,7 +35,7 @@ tr > *{
     max-width: 60%;
     margin: 0 auto;
     overflow: scroll;
-    max-height: 10%;
+    max-height: 500px;
 }
 .error_message {
     color: #B20000;
