@@ -3,9 +3,9 @@ function getUserInput(e) {
     e.preventDefault();
     clearTable();
     var all_num = ["x1", "x2", "y1", "y2"];
-    const formInput = new formInput(e.target);
+    const formData = new formData(e.target);
     for (var i = 0; i < all_num.length; i++) {
-        const data = Number(formInput.get(all_num[i]));
+        const data = Number(formData.get(all_num[i]));
         const valid = validateInput(data);
 
         if (valid.isValid) {
