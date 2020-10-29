@@ -1,0 +1,33 @@
+﻿<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/table.js"></script>
+    <title>Homework 5</title>
+</head>
+<body>
+    <div class="line" id="top-bar"></div>
+    <form id="input" onsubmit="getUserInput(event)">
+        <p>Table Time! Enter a range of numbers to be provided with a table of free math!</p>
+        Range of x: <input type="number" name="x1" id="x_low" placeholder="#" required /> -
+        <input type="number" class="error_message" name="x2" id="x_high" placeholder="#" required /></br>
+        <p id="x1_error" class="error_message hidden"></p>
+        <p id="x2_error" class="error_message hidden"></p>
+
+        Range of y: <input type="number" name="y1" id="y_low" placeholder="#" required /> - 
+        <input type="number" name="y2" id="y_high" placeholder="#" required />
+        <p id="y1_error" class="error_message hidden"></p>
+        <p id="y2_error" class="error_message hidden"></p>
+        <input type="submit">
+    </form>
+    <div id="empty">
+        <p>Please input data for the multiplication table to be generated.</p>
+    </div>
+
+    <!-- Generate Table -->
+    <div class="table-wrapper">
+        <table id="results">
+        </table>
+    </div>
+</body>
+</html>
