@@ -1,4 +1,5 @@
 function getUserInput(e) {
+    document.getElementById("empty").style.display = "block";
     var error = false;
     e.preventDefault();
     clearTable();
