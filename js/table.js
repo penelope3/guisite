@@ -10,7 +10,7 @@ function getUserInput(e) {
         const valid = validateInput(data);
 
         if (valid.isValid) {
-            clearEroro(all_num[i])
+            clearError(all_num[i])
             all_num[i] = data;
         }
         else {
