@@ -12,6 +12,10 @@ form{
     text-align: center;
     padding: 20px;
 }
+form div {
+    display: inline-block;
+    vertical-align: top;
+}
 input{
     width: 100px;
 }
