@@ -1,95 +1,117 @@
-header{
-  padding: 0;
-  margin: 0;
+header {
+    padding: 0;
+    margin: 0;
 }
-body{
-  background-image: url(textured-paper.png);
-  background-color: #a0a177;
+
+body {
+    background-image: url(textured-paper.png);
+    background-color: #a0a177;
 }
-form{
+
+form {
     width: 400px;
     margin: 0 auto;
     text-align: center;
     padding: 20px;
 }
-form div {
-    display: inline-block;
-    vertical-align: top;
-}
-input{
+
+    form div {
+        display: inline-block;
+        vertical-align: top;
+    }
+
+input {
     width: 100px;
 }
+
 table {
     background: #855E42;
     border-radius: 5px;
     margin: 0 auto;
     border-collapse: collapse;
 }
+
 th {
     color: #9e7a60;
     font-weight: bold;
 }
+
 td {
     background: #9e7a60;
 }
-tr > *{
+
+tr > * {
     padding: 5px 15px;
 }
-.table-wrapper{
+
+.table-wrapper {
     max-width: 60%;
     margin: 0 auto;
     overflow: scroll;
     max-height: 500px;
 }
+
 .error_message {
     color: #B20000;
 }
-#empty{
+
+#empty {
     width: 300px;
     margin: 30px auto;
     text-align: center;
 }
-.container-fluid{
-  max-width: 80rem;
+
+.container-fluid {
+    max-width: 80rem;
 }
-.jumbotron{
-  background: none;
+
+.jumbotron {
+    background: none;
 }
-.navbar{
-  background-color: #FAC0CB;
-  opacity: 0.9;
-  font-family: "Courier New", Courier, monospace;
+
+.navbar {
+    background-color: #FAC0CB;
+    opacity: 0.9;
+    font-family: "Courier New", Courier, monospace;
 }
+
 .card {
     width: 35rem;
     border-radius: .8rem;
     background: #855E42;
     opacity: .9;
 }
-.h-divider{
-  border-top: 1px solid white;
+
+.h-divider {
+    border-top: 1px solid white;
 }
-.card-text{
-  font-family: "Courier New", Courier, monospace;
-  font-size: 17px;
-  font-weight: bold;
+
+.card-text {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 17px;
+    font-weight: bold;
 }
-.img-responsive{
-  height: 120px;
-  width: 130px;
+
+.img-responsive {
+    height: 120px;
+    width: 130px;
 }
-li{
-  display:inline;
+
+li {
+    display: inline;
 }
-p{
-  font-family: "Courier New", Courier, monospace;
-  font-weight: bold;
+
+p {
+    font-family: "Courier New", Courier, monospace;
+    font-weight: bold;
 }
+
 #assignments {
     width: 70rem;
     height: 40rem;
     border-radius: .8rem;
 }
-#owl{
-  width: 100%;
+
+#owl {
+    width: 100%;
 }

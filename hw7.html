@@ -1,0 +1,117 @@
+<!--
+File: hw7.html
+91.61 GUI Programming I
+Pooja K Patel, UMass Lowell Computer Science Undergrad Student, pkpatel@cs.uml.edu
+Pooja_Patel@student.uml.edu
+Copyright (c) 2020 by Pooja K. Patel. All rights reserved.
+Updated by PKP on November 25, 2020 at 8:13pm
+
+Description: This file contains the input form and UI wrapper for the table being
+created via javascript and validated by JQuery.
+-->
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style-hw7.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="js/table_v3.js"></script>
+    <script src="js/tabs.js"></script>
+    <script src="js/slider.js"></script>
+    <link rel="shortcut icon" href="#" />
+    <title>Homework 7</title>
+</head>
+<body>
+    <div class="jumbotron jumbotron-fluid mt-3 br-2">
+        <div class="col d-flex justify-content-center">
+            <div class="card shadow-sm">
+                <form id="input" onsumbit="return false;">
+                    <p>Table Time! Use the sliders to enter a range of numbers to be provided with a table of free math!</p>
+                    <label>Range of x:</label>
+                    <div class="range">
+                        <input type="text" value="-25" name="x1" onchange="inputChange(this)" />
+                        <div id="x_slider"></div>
+                        <input type="text" value="25" name="x2" onchange="inputChange(this)" />
+                    </div>
+
+
+                    <label>Range of y:</label>
+                    <div class="range">
+                        <input type="text" value="-25" name="y1" onchange="inputChange(this)" />
+                        <div id="y_slider"></div>
+                        <input type="text" value="25" name="y2" onchange="inputChange(this)" />
+                    </div>
+
+
+                    <div class="error"></div>
+                    <input type="button" id="add-tab" value="Add" />
+                    <input type="button" id="delete-tab" value="Delete" />
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+
+    <div id="tabs">
+        <ul></ul>
+    </div>
+
+    <!-- Here begins the JQuery Validation. -->
+    <script>
+
+        $("input[name='x1']").change(function () {
+            const val = $("input[name='x2']").val();
+            if (isNaN(val) || val == "") return
+            $('#input').data('validator').element("input[name='x2']")
+        })
+        $("input[name='y1']").change(function () {
+            const val = $("input[name='y2']").val();
+            if (isNaN(val) || val == "") return
+            $('#input').data('validator').element("input[name='y2']")
+        })
+        //used https://jqueryvalidation.org/rules/ to go off of.
+        //rules are: each required input must be a whole number within the given range
+        $('#input').validate({
+            rules: {
+                x1: {
+                    required: true,
+                    number: true,
+                    range: [-50, 50],
+                    step: 1
+
+                },
+                x2: {
+                    required: true,
+                    number: true,
+                    range: [-50, 50],
+                    step: 1
+                },
+                y1: {
+                    required: true,
+                    number: true,
+                    range: [-50, 50],
+                    step: 1
+                },
+                y2: {
+                    required: true,
+                    number: true,
+                    range: [-50, 50],
+                    step: 1
+                }
+            },
+            messages: {
+                step: "Please enter an integer value."
+            },
+            error_element: "div",
+            error_label: ".error",
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,161 @@
+/*
+File: style-hw7.css
+91.61 GUI Programming I
+Pooja K Patel, UMass Lowell Computer Science Undergrad Student, pkpatel@cs.uml.edu
+Pooja_Patel@student.uml.edu
+Copyright(c) 2020 by Pooja K.Patel.All rights reserved.
+Updated by PKP on November 25, 2020 at 8:18pm
+
+Description: This file contains css styling for the assignment.
+*/
+
+/*overall page css*/
+header {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-image: url(textured-paper.png);
+    background-color: #a0a177;
+}
+
+.container-fluid {
+    max-width: 80rem;
+}
+
+.jumbotron {
+    background: none;
+}
+
+.card {
+    width: 40rem;
+    border-radius: .8rem;
+    background: #855E42;
+    opacity: .9;
+}
+
+
+.card-text {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+li {
+    display: inline;
+}
+
+p {
+    font-family: "Courier New", Courier, monospace;
+    font-weight: bold;
+}
+/*End overall page styling*/
+
+/*Styling the form*/
+.ui-slider-range {
+    background: linear-gradient(270deg, #C33C44, #DDB8B9);
+    background-size: 200% 400%;
+    background-color: rgba(255, 176, 0, 0.9);
+}
+
+#x_slider .ui-slider-handle,
+#y_slider .ui-slider-handle {
+    background: none;
+    background-color: lightgray;
+}
+
+.range > * {
+    display: inline-block;
+}
+
+.range input {
+    vertical-align: text-bottom;
+    width: 36px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.range div {
+    width: calc(100% - 110px);
+}
+
+form {
+    width: 400px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px;
+}
+
+    form > div {
+        margin: 10px 0 15px;
+    }
+
+div.error {
+    color: red;
+    font-style: italic;
+}
+
+input.error {
+    border: 2px solid red;
+    background-color: rgba(255, 8, 0, 0.48);
+}
+/*end of form styling*/
+
+/*Styling Output Table Stuff*/
+.ui-tabs-nav {
+    background: #C07F79;
+    background: linear-gradient(270deg, #A65E59, #B87E7A);
+}
+
+.ui-tabs-anchor {
+    background: #8C6B55;
+}
+
+#tabs {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 19px;
+    font-weight: bold;
+    width: 60rem;
+    margin: 0 auto;
+    background: #81634E;
+}
+
+table {
+    background: #6C5342;
+    border-radius: 5px;
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+th {
+    color: #9e7a60;
+    font-weight: bold;
+}
+
+td {
+    background: #9e7a60;
+}
+
+tr > * {
+    padding: 5px 15px;
+}
+
+.table-wrapper {
+    max-width: 75%;
+    margin: 0 auto;
+    overflow: scroll;
+    max-height: 500px;
+}
+
+.error_message {
+    color: #B20000;
+}
+
+#empty {
+    width: 300px;
+    margin: 30px auto;
+    text-align: center;
+}
+
+
