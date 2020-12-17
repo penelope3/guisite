@@ -1,0 +1,165 @@
+/*
+File: style-hw8.css
+91.61 GUI Programming I
+Pooja K Patel, UMass Lowell Computer Science Undergrad Student, pkpatel@cs.uml.edu
+Pooja_Patel@student.uml.edu
+Copyright (c) 2020 by Pooja K. Patel. All rights reserved.
+Updated by PKP on December 16, 2020 at 10:53pm
+
+Description: This file contains the css styling for the scrabble board hw.
+*/
+
+body {
+  background-color: #E3C9B8;
+  font-family: 'Courier New', monospace;
+}
+
+h2 {
+  font-weight: bold;
+}
+
+.bg {
+  background: #9C7861;
+  margin-bottom: 50px;
+  color: #471324;
+}
+
+/* Holds css for the scrabble portion */
+.gameContainer {
+  width: 50%;
+  margin: auto;
+  padding-left: 150px;
+}
+
+.gameScore {
+  background-color: #BD637F;
+  display: flex;
+  max-width: 1000px;
+  color: white;
+  justify-content: space-between;
+  padding: 15px;
+  padding-bottom: 0;
+  font-size: 26px;
+  font-weight: 500;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+span {
+  font-weight: 600;
+}
+
+.gameScore {
+  min-width: 800px;
+}
+
+.gameBoard {
+  margin-top: 50px;
+  align-content: center;
+  display: flex;
+  min-width: 800px;
+}
+
+.gameBoard .dropBox {
+  height: 92px;
+  width: 90px;
+  border: 1px solid black;
+}
+
+.gameBoard .empty {
+  background-image: url("../img/Scrabble_Board_OneLine.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.gameBoard .doubleLetter {
+  background-image: url("../img/double_letter.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  padding: 0;
+}
+
+.gameBoard .doubleWord {
+  background-image: url("../img/double_word.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  padding: 0;
+}
+
+.gameBoard .fill img {
+  height: 90px;
+  width: 90px;
+}
+
+#error {
+  background-color: #E3A1B7;
+  font-size: 18px;
+  text-align: center;
+  color: #660F0F;
+}
+
+/* Holds css for the rack section of page */
+#rackContainer {
+  position: relative;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  height: 200px;
+  max-width: 700px;
+  margin: auto;
+  margin-top: 55px;
+}
+
+.rackImg {
+  width: 100%;
+  position: absolute;
+  z-index: 0;
+}
+
+.rack {
+  z-index: 45;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  height: 75%;
+  width: 95%;
+}
+
+.rack .empty {
+  height: 90px;
+  width: 90px;
+  margin-right: 0;
+}
+
+.empty img {
+  height: 90px;
+  width: 90px;
+}
+
+/* Holds css for the buttons at the botton (submit/reset) */
+.gameControls {
+  display: flex;
+  justify-content: center;
+  width: 50%;
+  margin: auto;
+  padding-top: 10px;
+  padding-bottom: 80px;
+  font-size: 18px;
+}
+
+button {
+  background: #BD637F;
+  padding: 12px;
+  margin: 20px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  color: white;
+  transition: background 0.2s ease;
+}
+
+button:hover {
+  background: #7A5741;
+}

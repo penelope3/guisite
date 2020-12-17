@@ -1,0 +1,79 @@
+﻿<!--
+File: hw8.html
+91.61 GUI Programming I
+Pooja K Patel, UMass Lowell Computer Science Undergrad Student, pkpatel@cs.uml.edu
+Pooja_Patel@student.uml.edu
+Copyright (c) 2020 by Pooja K. Patel. All rights reserved.
+Updated by PKP on December 16, 2020 at 10:50pm
+
+Description: This file contains the base of the scrabble page, containers for the 
+game row and rack
+-->
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>Scrabble Game</title>
+    <!-- Extra files, css and js -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style-hw8.css">
+    <script defer src="js/script.js"></script>
+    <script defer src="js/errorHandle.js"></script>
+</head>
+
+<body>
+    <section id="mainContainer">
+        <!-- header -->
+        <div class="container-fluid p-3 bg">
+            <h2>Scrabble Time</h2>
+        </div>
+
+        <!-- contains the scrabble board line -->
+        <div class="gameContainer">
+            <!-- error catching message -->
+            <p id="error"></p>
+            <!-- current game info, in span classes to add info using js -->
+            <div class="gameScore shadow p-3 bg">
+                <p>Letters Left: <span class="remainingLetters">-</span></p>
+                <p>Score: <span class="score">-</span></p>
+                <p>Total Score: <span class="totalScore">-</span></p>
+            </div>
+            <!-- game baord, classes marking the special tile spots -->
+            <div class="gameBoard">
+                <div class="empty dropBox first doubleWord"></div>
+                <div class="empty dropBox"></div>
+                <div class="empty dropBox"></div>
+                <div class="empty dropBox"></div>
+                <div class="empty dropBox doubleLetter"></div>
+                <div class="empty dropBox"></div>
+                <div class="empty dropBox doubleLetter"></div>
+                <div class="empty dropBox"></div>
+                <div class="empty dropBox"></div>
+                <div class="empty dropBox"></div>
+                <div class="empty dropBox last doubleWord"></div>
+            </div>
+        </div>
+        <!-- the rack where player can choose their letter -->
+        <div id="rackContainer">
+            <img src="img/rack.png" class="rackImg" draggable="false">
+            <div class="rack">
+                <div class="empty rackLetters"></div>
+                <div class="empty rackLetters"></div>
+                <div class="empty rackLetters"></div>
+                <div class="empty rackLetters"></div>
+                <div class="empty rackLetters"></div>
+                <div class="empty rackLetters"></div>
+                <div class="empty rackLetters"></div>
+
+            </div>
+        </div>
+        <!--for submitting or resetting the game -->
+        <div class="gameControls">
+            <button type="button" class="sbtWord">Submit Word</button>
+            <button type="button" class="reset">Restart Game</button>
+        </div>
+
+    </section>
+</body>
+</html>

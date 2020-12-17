@@ -8,6 +8,7 @@ Updated by PKP on November 25, 2020 at 8:14pm
 
 Description: This file contains code for creating tables.
 */
+
 $(function () {
     $("#input").change(function () {
         if (!$("#input").valid()) return;
