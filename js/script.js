@@ -11,25 +11,31 @@ drag/drop and updating the board/score.
 
 
 // Source variables for following functions
+// for image-value getting
 let letter_array = [];
 let currentsrc = "";
 let imgsrc = "a";
+// for drag/drop events
+let dragged = false;
+let dropped = true;
 let dropElem;
 let adjacentTiles = false;
 let prev, next;
-let dragged = false;
-let dropped = true;
+// for updating score
 let userScore = 0;
 let currentWord = 0;
 let doubleWord = 0;
+let newLetters;
 
+// set up letters with values
 store_letters();
-const newLetters = JSON.parse(letters)
 store_letter_array();
 
 const score = document.querySelector(".score")
-const rackBox = document.querySelectorAll(".rack > .empty")
+const emptyRack = document.querySelectorAll(".rack > .empty")
 const clearBoardTiles = document.querySelectorAll(".letter")
+
+// fill rack with letter tiles
 fillRack()
 
 // gets new current score and adds to total score
@@ -164,21 +170,21 @@ function checkAdjacent(elem){
 // get random tiles each time page loads
 function fillRack(){
   // goes thru the whole rack and restocks any img thats missing from the rack
-  rackBox.forEach(box => {
+  emptyRack.forEach(emptytile => {
     
     const index = Math.floor(Math.random() * letter_array.length)
     const randIndexValue = letter_array[index]
     
     // add img on the rack 
-    if(box.children[0] == undefined && randIndexValue != undefined && !(letter_array.length <= 0)){
-      generateTile(box, randIndexValue)
+    if(emptytile.children[0] == undefined && randIndexValue != undefined && !(letter_array.length <= 0)){
+      generateTile(emptytile, randIndexValue)
       // take the words out/pop of the array once they are given to the user
       letter_array.splice(index, 1);
       // update the remaining letters for the user
       document.querySelector(".tilesLeft").textContent = letter_array.length;
     } 
     // checks if the game is done
-    const endGame = [...rackBox].some(checkEndGame)
+    const endGame = [...emptyRack].some(checkEndGame)
     if(randIndexValue == undefined && letter_array.length <= 0 && endGame == false)
       errorLog("GameOver")
   });
@@ -194,7 +200,7 @@ function fillRack(){
 }
 
 // Creating New div and placing New Image inside
-function generateTile(box, img = currentsrc){
+function generateTile(emptytile, img = currentsrc){
   // every time the block is moved, it makes a new img and deletes the old one
   const newDiv = document.createElement("div")
   const newImg = document.createElement("img")
@@ -205,33 +211,33 @@ function generateTile(box, img = currentsrc){
   newImg.src = img;
 
   newDiv.append(newImg)
-  box.append(newDiv)
+  emptytile.append(newDiv)
 }
 
 function getNewScore(letter, element){
 
-  for(let i = 0; i < newLetters.pieces.length; i++){
+  for(let i = 0; i < newLetters.tiles.length; i++){
     // get the letter from the JSON file
-    if(newLetters.pieces[i].letter === letter.toUpperCase()){
+    if(newLetters.tiles[i].letter === letter.toUpperCase()){
       // if the tile has not been moved from original spot, then dont add score
       if(element == dropElem)
        return;
       if(element.classList.contains("doubleWord")) 
       {
-        userScore = userScore * 2 + newLetters.pieces[i].value * 2;
+        userScore = userScore * 2 + newLetters.tiles[i].value * 2;
         doubleWord = 1;
       }
       // if the selected letter is placed on doubleLetter and the word is doubled, quadruple the value of the new piece
       else if(element.classList.contains("doubleLetter") && (doubleWord == 1))
-        userScore = userScore + (newLetters.pieces[i].value * 4);
+        userScore = userScore + (newLetters.tiles[i].value * 4);
       // if the selected letter is placed on a doubleLetter or has double word value, double the new tile value
       else if(element.classList.contains("doubleLetter") || (doubleWord == 1))
-        userScore = userScore + (newLetters.pieces[i].value * 2);
+        userScore = userScore + (newLetters.tiles[i].value * 2);
       // else if its just a regular box, then only add the original value
       else if(!element.classList.contains("doubleLetter")
        && (!element.classList.contains("doubleWord")) 
        && element.classList.contains("letter"))
-        userScore = userScore + newLetters.pieces[i].value;
+        userScore = userScore + newLetters.tiles[i].value;
       // update the score for the user
       score.textContent = userScore;
     }
@@ -248,7 +254,7 @@ function checkEndGame(elem){
 
 function store_letters() {
   // JSON object of letter data
-letters = `{"pieces": [
+letters = `{"tiles": [
     {"letter":"A", "value":1,  "amount":9},
     {"letter":"B", "value":3,  "amount":2},
     {"letter":"C", "value":3,  "amount":2},
@@ -277,12 +283,13 @@ letters = `{"pieces": [
     {"letter":"Z", "value":10, "amount":1}
   ]
 }`
+newLetters = JSON.parse(letters)
 }
 
 function store_letter_array() {
 // go thru the json and get each "letter" into new array (reflecting amount per letter)
-for(let i = 0; i < newLetters.pieces.length; i++){
-  for(let j = 0; j < newLetters.pieces[i].amount; j++)
-    letter_array.push(`img/${newLetters.pieces[i].letter}.jpg`)
+for(let i = 0; i < newLetters.tiles.length; i++){
+  for(let j = 0; j < newLetters.tiles[i].amount; j++)
+    letter_array.push(`img/${newLetters.tiles[i].letter}.jpg`)
 }
 }

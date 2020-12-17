@@ -12,14 +12,12 @@ Description: This file contains the error catching for anything that goes wrong.
 // logs the errors
 const error = document.querySelector("#error");
 function errorLog(errType = "Default"){
-  const Default = "There was an error moving the tile."
-  const BadDrag = "The tile can't be moved once placed on the board. Please submit the word to clear the board."
-  const NoAdjacent = "The tile couldn't be placed. The letter needs to be next to an existing tile."
-  const ParentSiblings = "The tile can't be moved from the middle of the tiles. Please move the words next to it first."
+  const Default = "There was an error moving this tile."
+  const BadDrag = "The tile can't be moved once placed. Please submit the word continue."
+  const NoAdjacent = "The tile couldn't be placed. Place a tile next to an existing board tile."
   const Invalid = "The tile couldn't be placed. Please place the tiles on the board."
-  const TileExists = "The block already contains a tile. Please place the tile in an empty slot."
-  const NoRestock = "Can not restock the hand if board still has tiles, please submit the current word before stocking."
-  const GameOver = "Game over! You are out of tiles. Please reset the game to continue playing."
+  const TileExists = "The block already contains a tile. Place the letter in an empty board tile."
+  const GameOver = "Game over! Please reset the game to get new tiles."
 
   clearErrorLog();
   switch(errType){
@@ -29,14 +27,8 @@ function errorLog(errType = "Default"){
     case "NoAdjacent":
       error.textContent = NoAdjacent;
       break;
-    case "ParentSiblings":
-      error.textContent = ParentSiblings;
-      break;
     case "TileExists":
       error.textContent = TileExists;
-      break;
-    case "NoRestock":
-      error.textContent = NoRestock;
       break;
     case "GameOver":
       error.textContent = GameOver;
