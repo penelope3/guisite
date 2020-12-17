@@ -20,6 +20,7 @@ let prev, next;
 let dragged = false;
 let dropped = true;
 let userScore = 0;
+let currentWord = 0;
 let doubleWord = 0;
 
 store_letters();
@@ -30,26 +31,37 @@ const score = document.querySelector(".score")
 const rackBox = document.querySelectorAll(".rack > .empty")
 const clearBoardTiles = document.querySelectorAll(".letter")
 
-// keep getting the updated values
+function SubmitWord() {
+  const sbmWord = document.querySelector(".subWord")
+  const totalScore = document.querySelector(".totalScore")
+  currentWord = currentWord + userScore;
+  totalScore.textContent = currentWord;
+  stockRack()
+  clearErrorLog();
+//})
+}
+
+
+// main drag and drop calls
 setInterval(() => {
-  let fill = document.querySelectorAll(".fill");
-  fill.forEach(tile => {
-    tile.addEventListener("dragstart", dragStart);
-    tile.addEventListener("dragend", dragEnd);
+  let generate = document.querySelectorAll(".generate");
+  generate.forEach(tile => {
+    tile.addEventListener("dragstart", drag_begin);
+    tile.addEventListener("dragend", drag_done);
   });
 
   // select all the boxes 
   const empty = document.querySelectorAll(".empty");
   empty.forEach(slot => {
-    slot.addEventListener("dragover", dragOver);
-    slot.addEventListener("dragleave", dragLeave);
+    slot.addEventListener("dragover", drag_check);
+    slot.addEventListener("dragleave", drag_save);
     slot.addEventListener("drop", dropTile);
   });
 
 }, 100);
 
 // checks when the user starts dragging image
-function dragStart(){
+function drag_begin(){
   currentsrc = this.children[0].src;
   // gets the dropElem so if the drag wasnt successful then undo the img
   dropElem = this.parentElement;
@@ -58,8 +70,8 @@ function dragStart(){
 }
 
 // when the user lets go of the img
-function dragEnd(){
-  this.classList.add("fill")
+function drag_done(){
+  this.classList.add("generate")
   if(dropped == false || dragged == false){
     if(dropElem.classList.contains("letter"))
       errorLog("BadDrag")
@@ -70,14 +82,14 @@ function dragEnd(){
 }
 
 // listens for when the img is on this particular box
-function dragOver(e){
+function drag_check(e){
   // prevent the default behaviour of dragover otherwise dropTile() wouldnt work
   e.preventDefault();
   dragged = true;
 }
 
 // checks when img leaves the div
-function dragLeave(){
+function drag_save(){
   // if the image is dragged out of the box then set it to false so it doesnt make the img disappear
   dragged = false;
 }
@@ -153,18 +165,6 @@ function getSiblings(elem){
   return false;
 } 
 
-// adds the word to the total score and restock the user hands
-function SubmitWord() {
-  const sbmWord = document.querySelector(".subWord")
-  const totalScore = document.querySelector(".totalScore")
-  let tempUserScore = 0;
-  tempUserScore = tempUserScore + userScore
-  totalScore.textContent = tempUserScore
-  stockRack()
-  clearErrorLog();
-}
-
-// call it once before the game starts
 stockRack()
 // get random images each time page loads
 function stockRack(){
@@ -208,7 +208,7 @@ function newImg(box, img = currentsrc){
   const newDiv = document.createElement("div")
   const newImg = document.createElement("img")
   
-  newDiv.classList.add("fill")
+  newDiv.classList.add("generate")
   newDiv.setAttribute('draggable', true);
 
   newImg.src = img;
@@ -245,6 +245,7 @@ function updateUserScore(letter, element){
       score.textContent = userScore;
     }
   }
+  doubleWord = 0;
 }
 
 // checks if the game is over

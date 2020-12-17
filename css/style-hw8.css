@@ -75,7 +75,7 @@ Description: This file contains the css styling for the scrabble board hw.
   width: 90px;
 }
 
-.sRow .fill img {
+.sRow .generate img {
   height: 90px;
   width: 90px;
 }
