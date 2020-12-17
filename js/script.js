@@ -4,7 +4,7 @@ File: script.js
 Pooja K Patel, UMass Lowell Computer Science Undergrad Student, pkpatel@cs.uml.edu
 Pooja_Patel@student.uml.edu
 Copyright(c) 2020 by Pooja K.Patel.All rights reserved.
-Updated by PKP on December 16, 2020 at 10:51pm
+Updated by PKP on December 17, 2020 at 11:40am
 Description: This file contains the data structure for the tiles, as well as both
 drag/drop and updating the board/score.
 */
@@ -30,18 +30,25 @@ store_letter_array();
 const score = document.querySelector(".score")
 const rackBox = document.querySelectorAll(".rack > .empty")
 const clearBoardTiles = document.querySelectorAll(".letter")
+fillRack()
 
+// gets new current score and adds to total score
 function SubmitWord() {
   const sbmWord = document.querySelector(".subWord")
   const totalScore = document.querySelector(".totalScore")
   currentWord = currentWord + userScore;
   totalScore.textContent = currentWord;
-  stockRack()
+  //clear doubleWord status after submitting to prevent future math mistakes
+  doubleWord = 0;
+  fillRack()
   clearErrorLog();
 //})
 }
 
 
+// DRAG and DROP modeled from https://www.javascripttutorial.net/web-apis/javascript-drag-and-drop/
+// this method uses js on any specified HTML element, and combined with drop event, will allow
+// the dropping necessary for the assignment
 // main drag and drop calls
 setInterval(() => {
   let generate = document.querySelectorAll(".generate");
@@ -50,7 +57,6 @@ setInterval(() => {
     tile.addEventListener("dragend", drag_done);
   });
 
-  // select all the boxes 
   const empty = document.querySelectorAll(".empty");
   empty.forEach(slot => {
     slot.addEventListener("dragover", drag_check);
@@ -58,18 +64,16 @@ setInterval(() => {
     slot.addEventListener("drop", dropTile);
   });
 
-}, 100);
+});
 
 // checks when the user starts dragging image
 function drag_begin(){
   currentsrc = this.children[0].src;
-  // gets the dropElem so if the drag wasnt successful then undo the img
   dropElem = this.parentElement;
-  // remove the element once moved after small delay
   setTimeout(()=> (dropElem.textContent = ""), 0);
 }
 
-// when the user lets go of the img
+// checks when the user lets go
 function drag_done(){
   this.classList.add("generate")
   if(dropped == false || dragged == false){
@@ -77,29 +81,27 @@ function drag_done(){
       errorLog("BadDrag")
     else
       errorLog("Invalid")
-    newImg(dropElem)
+    generateTile(dropElem)
   }
 }
 
-// listens for when the img is on this particular box
+// checks if image is on the droppable box (board tile)
 function drag_check(e){
-  // prevent the default behaviour of dragover otherwise dropTile() wouldnt work
   e.preventDefault();
   dragged = true;
 }
 
-// checks when img leaves the div
+// makes sure tile doesn't disappear
 function drag_save(){
-  // if the image is dragged out of the box then set it to false so it doesnt make the img disappear
   dragged = false;
 }
 
-// checks when img is dropped in the div
+// drops image onto board
 function dropTile(){
   const checkSib = document.querySelectorAll(".letter")
-  adjacentTiles = [...checkSib].some(getSiblings)
+  adjacentTiles = [...checkSib].some(checkAdjacent)
 
-  // check for spaces and to make sure its placed next to existing tile
+  // makes sure tile is placed on existing tile, next to an already placed tile
   if(!this.classList.contains("first")
    && this.classList.contains("letter"))
     prev = this.previousSibling.previousSibling.childNodes.length;
@@ -107,20 +109,18 @@ function dropTile(){
   if(!this.classList.contains("last")
    && this.classList.contains("letter"))
     next = this.nextSibling.nextSibling.childNodes.length;
-  
-  // took the rest of the function out to make it more readable
+
   moveTiles(this)
 }
 
 function moveTiles(elem){
-  // if the box already contains img then dont add
   if(elem.childNodes.length >= 1 && dragged === true ){
     dropped = false;
     dragged = false;
     errorLog("TileExists")
     return;
   }
-  //  once the tile has been placed. it should not be moved around
+  // required case of don't drag a placed tile
   if(dropElem.classList.contains("undraggable")){
     dropped = false;
     dragged = false;
@@ -128,46 +128,41 @@ function moveTiles(elem){
     return;
   }
 
-  // check if the dropped box is the same box not the rack, if so take the value of the word
+  // check if the board tile is the same div not the rack
   if(elem.classList.contains("letter") && (prev == 1 || next == 1 || adjacentTiles == false)){
     clearErrorLog()
-    newImg(elem);
-    // to prevent it from moving again in the future
+    generateTile(elem);
     elem.classList.add("undraggable")
-    
     adjacentTiles == true
 
-    // get the letter value from the img src
+    // get the letter value and update the score element
     imgsrc = currentsrc.substring(currentsrc.indexOf("img/") + 4, currentsrc.indexOf(".jpg"));
-    updateUserScore(imgsrc, elem)
+    getNewScore(imgsrc, elem)
   } 
-
-  // if the user moves the tiles in the rack
   else if(elem.classList.contains("rLetter"))
-    newImg(elem);
-
-  // if it wasnt a valid play and it was not the rack then reset the letter
+    generateTile(elem);
+  // reset letter if invalid
   else{
     dropped = false;
     dragged = false;
-    newImg(dropElem);
-    errorLog("NoSiblings")
+    generateTile(dropElem);
+    errorLog("NoAdjacent")
   }
   // if drag was successful
   dropped = true;
   dragged = true;
 }
 
-// checks if siblings exist for the game board 
-function getSiblings(elem){
+// checks if tiles next to the chosen drop exist for the game board 
+function checkAdjacent(elem){
   if(elem.childNodes.length == 1)
     return true;
-  return false;
+  else
+    return false;
 } 
 
-stockRack()
-// get random images each time page loads
-function stockRack(){
+// get random tiles each time page loads
+function fillRack(){
   // goes thru the whole rack and restocks any img thats missing from the rack
   rackBox.forEach(box => {
     
@@ -176,20 +171,16 @@ function stockRack(){
     
     // add img on the rack 
     if(box.children[0] == undefined && randIndexValue != undefined && !(letter_array.length <= 0)){
-      newImg(box, randIndexValue)
-    
+      generateTile(box, randIndexValue)
       // take the words out/pop of the array once they are given to the user
       letter_array.splice(index, 1);
-
       // update the remaining letters for the user
       document.querySelector(".tilesLeft").textContent = letter_array.length;
     } 
-    
     // checks if the game is done
     const endGame = [...rackBox].some(checkEndGame)
     if(randIndexValue == undefined && letter_array.length <= 0 && endGame == false)
       errorLog("GameOver")
-
   });
 
   // clear the board if user submits the word
@@ -203,7 +194,7 @@ function stockRack(){
 }
 
 // Creating New div and placing New Image inside
-function newImg(box, img = currentsrc){
+function generateTile(box, img = currentsrc){
   // every time the block is moved, it makes a new img and deletes the old one
   const newDiv = document.createElement("div")
   const newImg = document.createElement("img")
@@ -217,7 +208,7 @@ function newImg(box, img = currentsrc){
   box.append(newDiv)
 }
 
-function updateUserScore(letter, element){
+function getNewScore(letter, element){
 
   for(let i = 0; i < newLetters.pieces.length; i++){
     // get the letter from the JSON file
@@ -245,7 +236,6 @@ function updateUserScore(letter, element){
       score.textContent = userScore;
     }
   }
-  doubleWord = 0;
 }
 
 // checks if the game is over

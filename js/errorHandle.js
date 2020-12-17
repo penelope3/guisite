@@ -4,7 +4,7 @@ File: errorHandle.js
 Pooja K Patel, UMass Lowell Computer Science Undergrad Student, pkpatel@cs.uml.edu
 Pooja_Patel@student.uml.edu
 Copyright(c) 2020 by Pooja K.Patel.All rights reserved.
-Updated by PKP on December 16, 2020 at 10:52pm
+Updated by PKP on December 17, 2020 at 11:40am
 
 Description: This file contains the error catching for anything that goes wrong.
 */
@@ -14,7 +14,7 @@ const error = document.querySelector("#error");
 function errorLog(errType = "Default"){
   const Default = "There was an error moving the tile."
   const BadDrag = "The tile can't be moved once placed on the board. Please submit the word to clear the board."
-  const NoSiblings = "The tile couldn't be placed. The letter needs to be next to an existing tile."
+  const NoAdjacent = "The tile couldn't be placed. The letter needs to be next to an existing tile."
   const ParentSiblings = "The tile can't be moved from the middle of the tiles. Please move the words next to it first."
   const Invalid = "The tile couldn't be placed. Please place the tiles on the board."
   const TileExists = "The block already contains a tile. Please place the tile in an empty slot."
@@ -26,8 +26,8 @@ function errorLog(errType = "Default"){
     case "BadDrag":
       error.textContent = BadDrag;
       break;
-    case "NoSiblings":
-      error.textContent = NoSiblings;
+    case "NoAdjacent":
+      error.textContent = NoAdjacent;
       break;
     case "ParentSiblings":
       error.textContent = ParentSiblings;
