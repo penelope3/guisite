@@ -85,6 +85,8 @@ Description: This file contains the css styling for the scrabble board hw.
   font-size: 18px;
   text-align: center;
   color: #660F0F;
+  max-width: 1000px;
+  min-width: 800px;
 }
 
 /* Holds css for the rack section of page */
