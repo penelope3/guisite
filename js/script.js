@@ -244,7 +244,6 @@ function getNewScore(letter, element){
   }
 }
 
-// checks if the game is over
 function checkEndGame(elem){
   if(elem.childElementCount == 1){
     return true;
@@ -253,7 +252,6 @@ function checkEndGame(elem){
 }
 
 function store_letters() {
-  // JSON object of letter data
 letters = `{"tiles": [
     {"letter":"A", "value":1,  "amount":9},
     {"letter":"B", "value":3,  "amount":2},
