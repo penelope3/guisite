@@ -33,17 +33,17 @@ const clearBoardTiles = document.querySelectorAll(".letter")
 // keep getting the updated values
 setInterval(() => {
   let fill = document.querySelectorAll(".fill");
-  fill.forEach(currImg => {
-    currImg.addEventListener("dragstart", dragStart);
-    currImg.addEventListener("dragend", dragEnd);
+  fill.forEach(tile => {
+    tile.addEventListener("dragstart", dragStart);
+    tile.addEventListener("dragend", dragEnd);
   });
 
   // select all the boxes 
   const empty = document.querySelectorAll(".empty");
-  empty.forEach(emptyBox => {
-    emptyBox.addEventListener("dragover", dragOver);
-    emptyBox.addEventListener("dragleave", dragLeave);
-    emptyBox.addEventListener("drop", dragDrop);
+  empty.forEach(slot => {
+    slot.addEventListener("dragover", dragOver);
+    slot.addEventListener("dragleave", dragLeave);
+    slot.addEventListener("drop", dropTile);
   });
 
 }, 100);
@@ -71,7 +71,7 @@ function dragEnd(){
 
 // listens for when the img is on this particular box
 function dragOver(e){
-  // prevent the default behaviour of dragover otherwise dragDrop() wouldnt work
+  // prevent the default behaviour of dragover otherwise dropTile() wouldnt work
   e.preventDefault();
   dragged = true;
 }
@@ -83,7 +83,7 @@ function dragLeave(){
 }
 
 // checks when img is dropped in the div
-function dragDrop(){
+function dropTile(){
   const checkSib = document.querySelectorAll(".letter")
   adjacentTiles = [...checkSib].some(getSiblings)
 
@@ -97,10 +97,10 @@ function dragDrop(){
     next = this.nextSibling.nextSibling.childNodes.length;
   
   // took the rest of the function out to make it more readable
-  moveTileValidate(this)
+  moveTiles(this)
 }
 
-function moveTileValidate(elem){
+function moveTiles(elem){
   // if the box already contains img then dont add
   if(elem.childNodes.length >= 1 && dragged === true ){
     dropped = false;
@@ -182,7 +182,7 @@ function stockRack(){
       letter_array.splice(index, 1);
 
       // update the remaining letters for the user
-      document.querySelector(".remainingLetters").textContent = letter_array.length;
+      document.querySelector(".tilesLeft").textContent = letter_array.length;
     } 
     
     // checks if the game is done
